@@ -2,6 +2,21 @@
 
 A simple PHP File or class loader for PHP. Built with PHP.
 
+## Table of Contents
+
+- [Usage](#usage)
+    - [Multiple Paths](#multiple-paths)
+- [Filename Constraints](#filename-constraints)
+    - [Using Multiple file names](#using-multiple-file-names)
+- [Loading Classes](#loading-classes)
+    - [Has Method](#has-method)
+    - [Call Static](#call-static)
+    - [Class or inheritance requirement](#class-or-inheritance-requirement)
+    - [Constructing, invoking or calling](#constructing-invoking-or-calling)
+- [Optimizations](#optimizations-wip)
+    - [Generating cache map](#generating-cache-map)
+- [Real life ground-breaking examples for cool kidz!! 😎](#real-life-ground-breaking-examples-for-cool-kidz-)
+
 ## Usage
 
 First create a Loader using `Loader::create`. This takes an absolute path to the directory you wish to load from as an
@@ -17,6 +32,7 @@ using `require`
     Loader::create(__DIR__ . '/MyDir');
 ```
 
+
 ### Multiple Paths
 
 You may supply an array of full paths to `Loader::create` if you need to handle multiple directories;
@@ -27,6 +43,7 @@ You may supply an array of full paths to `Loader::create` if you need to handle 
     
     Loader::create([__DIR__ . '/MyDir',__DIR__ . '/MyOtherDir']);
 ```
+
 
 ## Filename Constraints
 
@@ -43,9 +60,11 @@ By default `$fileName` is `*.php`
         ->fileName('*Foo.php');
 ```
 
+
 ### Using Multiple file names
 
 If you need to allow multiple filename formats then supply an array for `Loader::fileName`
+
 
 ## Loading Classes
 
@@ -58,6 +77,7 @@ If you have classes that you wish to load and initialize then read on!
 **Note:**
 All files will be loaded even if the class requirements are not fulfilled. The Loader has no knowledge of its classes
 before they are loaded.
+
 
 ### Has Method
 
@@ -74,6 +94,7 @@ Aborts handling a found class if it does not have a specific method.
         ->invoke();
 ```
 
+
 ### Call Static
 
 To call a static method on all loaded classes specify the method using `Loader::callStatic($methodName)`
@@ -89,6 +110,7 @@ beforehand
         ->isA(\Foo::class)
         ->callStatic('myMethod');
 ```
+
 
 ### Class or inheritance requirement
 
@@ -107,6 +129,7 @@ will never be constructed or called.
         ->callStatic('myMethod');
 ```
 
+
 ### Constructing, invoking or calling
 
 You can also construct an instance from the loaded classes, call a method on an instance or invoke an instance using the
@@ -121,6 +144,7 @@ If you use `Loader::invoke` or `Loader::call` then it is not necessary to use `L
     Loader::create(__DIR__ . '/MyDir')
         ->call('myMethod');
 ```
+
 
 ## Optimizations (🚧WIP)
 
