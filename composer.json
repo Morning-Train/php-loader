@@ -1,0 +1,21 @@
+{
+  "name": "morningtrain/php-loader",
+  "description": "A class for loading and initializing all classes in a PSR-4 directory",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "version": "v0.0.2",
+  "authors": [
+    {
+      "name": "Morningtrain - Mathias Højrup Munk",
+      "email": "mh@morningtrain.dk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Morningtrain\\PHPLoader\\": "src/"
+    }
+  },
+  "require": {
+    "symfony/finder": "^6"
+  }
+}
