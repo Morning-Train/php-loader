@@ -1,6 +1,7 @@
 # PHP Loader
 
-x
+A simple PHP File or class loader for PHP. Built with PHP.
+
 ## Usage
 
 First create a Loader using `Loader::create`. This takes an absolute path to the directory you wish to load from as an
