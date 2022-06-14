@@ -5,6 +5,8 @@ A simple PHP File or class loader for PHP. Built with PHP.
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
 - [Dependencies](#dependencies)
     - [symfony/finder](#symfonyfinder)
 - [Usage](#usage)
@@ -16,7 +18,7 @@ A simple PHP File or class loader for PHP. Built with PHP.
     - [Call Static](#call-static)
     - [Class or inheritance requirement](#class-or-inheritance-requirement)
     - [Constructing, invoking or calling](#constructing-invoking-or-calling)
-- [Optimizations (🚧WIP)](#optimizations-wip)
+- [Optimizations](#optimizations)
     - [Generating cache map](#generating-cache-map)
 - [Real life ground-breaking examples for cool kidz!! 😎](#real-life-ground-breaking-examples-for-cool-kidz-)
     - [Loading routes](#loading-routes)
@@ -33,6 +35,36 @@ For instance you may use this tool to load all files in a "/routes" directory or
 
 More specifically, this tool is made for, but not dependent on, the WP-Framework. Here it is useful for loading in all routes, registering all blocks and initializing all Hooks.
 
+
+## Getting Started
+
+To get started instal the package as described below in [Installation](#installation).
+
+To use the tool have a look at [Usage](#usage)
+
+### Installation
+**(WIP 🚧)**
+
+For now the tool is available here at backuptrain/gitlab.
+The package is a private package so to install it you must be verified.
+
+This is done by making sure you have a token on your user with `api` permissions.
+
+Then run `afd` in your project root to create your key `auth.json`.
+Now register backuptrain as a repo by adding the following to your `composer.json`:
+```json
+{
+
+}
+```
+
+Finally add your package and install it!
+
+```json
+{
+
+}
+```
 
 ## Dependencies
 
@@ -160,7 +192,8 @@ If you use `Loader::invoke` or `Loader::call` then it is not necessary to use `L
         ->call('myMethod');
 ```
 
-## Optimizations (🚧WIP)
+## Optimizations
+**(WIP 🚧)**
 
 ### Generating cache map
 
