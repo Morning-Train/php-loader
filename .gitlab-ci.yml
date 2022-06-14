@@ -42,7 +42,7 @@ test:
   artifacts:
     reports:
       cobertura: coverage/cobertura-coverage.xml
-      junit: coverage/phpunit-report.xml
+      junit: phpunit-report.xml
   cache:
     key: "$CI_COMMIT_REF_SLUG-composer"
     paths:
