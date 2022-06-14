@@ -268,7 +268,7 @@
                 if ($this->invoke) {
                     $instance();
                 }
-                if ($this->callMethod) {
+                if ($this->callMethod && method_exists($instance, $this->callMethod)) {
                     $method = $this->callMethod;
                     $instance->$method();
                 }
