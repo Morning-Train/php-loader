@@ -23,6 +23,9 @@ publish:
 include:
   - remote: https://devops.mtra.in/tpl/v3/base/php.yml
 
+variables:
+  PHP_VERSION: '8.0'
+
 test:
   extends: .php-base
   stage: test
