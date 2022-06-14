@@ -1,7 +1,7 @@
 {
   "name": "morningtrain/php-loader",
   "description": "A class for loading PHP files and classes in a PSR-4 directory",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "license": "proprietary",
   "version": "v0.1.2",
   "authors": [
@@ -15,7 +15,27 @@
       "Morningtrain\\PHPLoader\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Morningtrain\\PHPLoader\\Tests\\": "tests"
+    }
+  },
   "require": {
+    "php": "^8.0",
     "symfony/finder": "^6"
-  }
+  },
+  "require-dev": {
+    "pestphp/pest": "^1.20"
+  },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "prefer-stable": true
 }

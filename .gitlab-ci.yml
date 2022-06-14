@@ -17,3 +17,32 @@ publish:
         echo "Could not create package - Code $code - $body";
         exit 1;
       fi
+
+
+
+include:
+  - remote: https://devops.mtra.in/tpl/v3/base/php.yml
+
+test:
+  extends: .php-base
+  stage: test
+  before_script:
+    - php --ini
+    - echo "xdebug.mode=coverage" > /usr/local/etc/php/conf.d/xdebug.ini
+  script:
+    - php -v
+    - composer -V # Composer version 1.10.15 2020-10-13 15:59:09
+    - composer install --prefer-dist --no-ansi --no-interaction --no-progress
+    - if [[ -x "vendor/brianium/paratest/bin/paratest" ]]; then php artisan test -vv --parallel --coverage-text=coverage-text.txt --coverage-cobertura=coverage/cobertura-coverage.xml --log-junit=coverage/phpunit-report.xml; fi
+    - if [[ ! -x "vendor/brianium/paratest/bin/paratest" ]]; then php artisan test -vv --coverage-text=coverage-text.txt --coverage-cobertura=coverage/cobertura-coverage.xml --log-junit=coverage/phpunit-report.xml; fi
+    - if [[ -f "coverage-text.txt" ]]; then head -n10 coverage-text.txt; fi
+  artifacts:
+    reports:
+      cobertura: coverage/cobertura-coverage.xml
+      junit: coverage/phpunit-report.xml
+  cache:
+    key: "$CI_COMMIT_REF_SLUG-composer"
+    paths:
+      - vendor/
+    policy: pull
+
