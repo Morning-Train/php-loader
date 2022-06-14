@@ -23,9 +23,6 @@ class Loader
     private bool $construct = false;
     private bool $isExpectingClasses = false;
 
-    private array $files = [];
-    private array $classes = [];
-
     /**
      * Create a ClassLoader for use
      *
@@ -49,9 +46,9 @@ class Loader
      */
     public function __destruct()
     {
-        $this->findFiles();
-        $this->loadClasses();
-        $this->handleClasses();
+        $files = $this->findFiles();
+        $classes = $this->loadClasses($files);
+        $this->handleClasses($classes);
     }
 
     /**
@@ -200,40 +197,33 @@ class Loader
             return [];
         }
 
+        $foundFiles = [];
         foreach ($finder as $file) {
-            $this->files[] = $file->getPathname();
+            $foundFiles[] = $file->getPathname();
         }
 
-        return $this->files;
-    }
-
-    /**
-     * Get the known files
-     *
-     * @return array
-     */
-    public function getFiles(): array
-    {
-        return $this->files;
+        return $foundFiles;
     }
 
     /**
      * Load all found classes by files and store them in $classes
      */
-    private function loadClasses(): void
+    private function loadClasses(array $files): array
     {
         $classes = [];
-        foreach ($this->files as $file) {
+        foreach ($files as $file) {
             require_once $file;
             $classes[] = \pathinfo($file, PATHINFO_FILENAME);
         }
 
         if (! $this->isExpectingClasses) {
-            return;
+            return [];
         }
 
         $allClasses = get_declared_classes();
         $l = count($allClasses); // Length of class array
+
+        $foundClasses = [];
 
         // Loop backwards through all known classes to find ours
         foreach ($classes as $class) {
@@ -242,20 +232,22 @@ class Loader
                 $currentClassName = $currentClassParts[array_key_last($currentClassParts)];
 
                 if ($currentClassName === $class) {
-                    $this->classes[] = $allClasses[$i];
+                    $foundClasses[] = $allClasses[$i];
                     // Break the foreach loop
                     continue 2;
                 }
             }
         }
+
+        return $foundClasses;
     }
 
     /**
      * Validate, call, construct, invoke the classes as defined
      */
-    private function handleClasses(): void
+    private function handleClasses(array $classes): void
     {
-        foreach ($this->classes as $class) {
+        foreach ($classes as $class) {
             $this->handleClass($class);
         }
     }
@@ -271,10 +263,12 @@ class Loader
         if ($this->className && ! is_a($class, $this->className, true)) {
             return;
         }
+
         // If class must have a given method then return if method does not exist
-        if ($this->hasMethod && ! method_exists($class, $this->hasMethod)) {
+        if ($this->hasMethod !== null && ! method_exists($class, $this->hasMethod)) {
             return;
         }
+
 
         // Call the static method if set and exists
         if ($this->callStaticMethod && method_exists($class, $this->callStaticMethod)) {
