@@ -42,6 +42,11 @@
         {
         }
 
+        /**
+         * Find all the matching files,
+         * then load the files classes
+         * handle classes if necessary
+         */
         public function __destruct()
         {
             $this->findFiles();
@@ -215,17 +220,19 @@
                 return;
             }
 
-            $all_classes = get_declared_classes();
-            $l = count($all_classes); // Length of class array
+            $allClasses = get_declared_classes();
+            $l = count($allClasses); // Length of class array
 
             // Loop backwards through all known classes to find ours
             foreach ($classes as $class) {
                 for ($i = $l - 1; $i >= 0; $i--) {
-                    $current_class_parts = explode('\\', $all_classes[$i]);
-                    $current_class_name = $current_class_parts[array_key_last($current_class_parts)];
+                    $currentClassParts = explode('\\', $allClasses[$i]);
+                    $currentClassName = $currentClassParts[array_key_last($currentClassParts)];
 
-                    if ($current_class_name === $class) {
-                        $this->classes[] = $all_classes[$i];
+                    if ($currentClassName === $class) {
+                        $this->classes[] = $allClasses[$i];
+                        // Break the foreach loop
+                        continue 2;
                     }
                 }
             }
