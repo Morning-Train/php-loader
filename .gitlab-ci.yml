@@ -36,9 +36,9 @@ test:
     - php -v
     - composer -V # Composer version 1.10.15 2020-10-13 15:59:09
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress
-    - if [[ -x "vendor/brianium/paratest/bin/paratest" ]]; then composer test -vv --parallel --coverage-text=coverage-text.txt --coverage-cobertura=coverage/cobertura-coverage.xml --log-junit=coverage/phpunit-report.xml; fi
-    - if [[ ! -x "vendor/brianium/paratest/bin/paratest" ]]; then composer test -vv --coverage-text=coverage-text.txt --coverage-cobertura=coverage/cobertura-coverage.xml --log-junit=coverage/phpunit-report.xml; fi
-    - if [[ -f "coverage-text.txt" ]]; then head -n10 coverage-text.txt; fi
+    - if [[ -x "vendor/brianium/paratest/bin/paratest" ]]; then composer test -vv --parallel; fi
+    - if [[ ! -x "vendor/brianium/paratest/bin/paratest" ]]; then composer test -vv; fi
+    - if [[ -f "coverage/text-coverage.txt" ]]; then head -n10 coverage/text-coverage.txt; fi
   artifacts:
     reports:
       cobertura: coverage/cobertura-coverage.xml
