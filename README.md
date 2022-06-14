@@ -4,6 +4,9 @@ A simple PHP File or class loader for PHP. Built with PHP.
 
 ## Table of Contents
 
+- [Introduction](#introduction)
+- [Dependencies](#dependencies)
+    - [symfony/finder](#symfonyfinder)
 - [Usage](#usage)
     - [Multiple Paths](#multiple-paths)
 - [Filename Constraints](#filename-constraints)
@@ -19,6 +22,23 @@ A simple PHP File or class loader for PHP. Built with PHP.
     - [Loading routes](#loading-routes)
     - [Loading and initializing Hooks](#loading-and-initializing-hooks)
     - [Loading and initializing Blocks](#loading-and-initializing-blocks)
+
+## Introduction
+
+This package is a tool to help you initialize parts of your projects by loading in all files that match certain filename rules in a defined directory.
+
+You may even initialize the classes contained in these files as long as they are PSR-4 compliant.
+
+For instance you may use this tool to load all files in a "/routes" directory or all files ending with "Block.php" and initialize all found classes that extend `Block` and then call `init` on them.
+
+More specifically, this tool is made for, but not dependent on, the WP-Framework. Here it is useful for loading in all routes, registering all blocks and initializing all Hooks.
+
+
+## Dependencies
+
+### symfony/finder
+[Finder](https://symfony.com/doc/current/components/finder.html) is used to find files in the directory
+
 
 ## Usage
 
