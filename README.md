@@ -1,5 +1,6 @@
 # PHP Loader
 
+[![Latest Release](https://backuptrain.dk/internal-projects/php-loader/-/badges/release.svg)](https://backuptrain.dk/internal-projects/php-loader/-/releases)
 [![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/pipelines)
 [![coverage status](https://backuptrain.dk/internal-projects/php-loader/badges/master/coverage.svg)](https://backuptrain.dk/internal-projects/php-loader/-/graphs/master/charts)
 
