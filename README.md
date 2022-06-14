@@ -30,14 +30,16 @@ A simple PHP File or class loader for PHP. Built with PHP.
 
 ## Introduction
 
-This package is a tool to help you initialize parts of your projects by loading in all files that match certain filename rules in a defined directory.
+This package is a tool to help you initialize parts of your projects by loading in all files that match certain filename
+rules in a defined directory.
 
 You may even initialize the classes contained in these files as long as they are PSR-4 compliant.
 
-For instance you may use this tool to load all files in a "/routes" directory or all files ending with "Block.php" and initialize all found classes that extend `Block` and then call `init` on them.
+For instance you may use this tool to load all files in a "/routes" directory or all files ending with "Block.php" and
+initialize all found classes that extend `Block` and then call `init` on them.
 
-More specifically, this tool is made for, but not dependent on, the WP-Framework. Here it is useful for loading in all routes, registering all blocks and initializing all Hooks.
-
+More specifically, this tool is made for, but not dependent on, the WP-Framework. Here it is useful for loading in all
+routes, registering all blocks and initializing all Hooks.
 
 ## Getting Started
 
@@ -46,18 +48,19 @@ To get started instal the package as described below in [Installation](#installa
 To use the tool have a look at [Usage](#usage)
 
 ### Installation
+
 **(WIP 🚧)**
 
-For now the tool is available here at backuptrain/gitlab.
-The package is a private package so to install it you must be verified.
+For now the tool is available here at backuptrain/gitlab. The package is a private package so to install it you must be
+verified.
 
 This is done by making sure you have a token on your user with `api` permissions.
 
-Then run `afd` in your project root to create your key `auth.json`.
-Now register backuptrain as a repo by adding the following to your `composer.json`:
+Then run `afd` in your project root to create your key `auth.json`. Now register backuptrain as a repo by adding the
+following to your `composer.json`:
+
 ```json
 {
-
 }
 ```
 
@@ -65,15 +68,14 @@ Finally add your package and install it!
 
 ```json
 {
-
 }
 ```
 
 ## Dependencies
 
 ### symfony/finder
-[Finder](https://symfony.com/doc/current/components/finder.html) is used to find files in the directory
 
+[Finder](https://symfony.com/doc/current/components/finder.html) is used to find files in the directory
 
 ## Usage
 
@@ -196,6 +198,7 @@ If you use `Loader::invoke` or `Loader::call` then it is not necessary to use `L
 ```
 
 ## Optimizations
+
 **(WIP 🚧)**
 
 ### Generating cache map
@@ -215,7 +218,6 @@ Loading all routes would look like this:
     Loader::create(__DIR__ . '/App/routes');
 ```
 
-
 ### Loading and initializing Hooks
 
 Loading and initializing all hooks would look like this:
@@ -228,7 +230,6 @@ Loading and initializing all hooks would look like this:
         ->isA(\Morningtrain\WP\Core\Abstracts\AbstractHook::class)
         ->invoke();
 ```
-
 
 ### Loading and initializing Blocks
 

@@ -12,10 +12,10 @@ publish:
     - body=$(echo "$response" | head -n 1)
     # Output state information
     - if [ $code -eq 201 ]; then
-        echo "Package created - Code $code - $body";
+      echo "Package created - Code $code - $body";
       else
-        echo "Could not create package - Code $code - $body";
-        exit 1;
+      echo "Could not create package - Code $code - $body";
+      exit 1;
       fi
 
 
