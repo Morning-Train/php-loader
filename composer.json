@@ -1,9 +1,9 @@
 {
   "name": "morningtrain/php-loader",
-  "description": "A class for loading and initializing all classes in a PSR-4 directory",
+  "description": "A class for loading PHP files and classes in a PSR-4 directory",
   "minimum-stability": "stable",
   "license": "proprietary",
-  "version": "v0.0.2",
+  "version": "v0.1.0",
   "authors": [
     {
       "name": "Morningtrain - Mathias Højrup Munk",
