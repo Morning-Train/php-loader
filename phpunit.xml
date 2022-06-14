@@ -37,4 +37,7 @@
     <logging>
         <junit outputFile="./phpunit-report.xml"/>
     </logging>
+    <php>
+        <server name="XDEBUG_MODE" value="coverage"/>
+    </php>
 </phpunit>
