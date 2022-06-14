@@ -1,6 +1,6 @@
 # PHP Loader
 
-[![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/commits/master)
+[![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/pipelines)
 
 A simple PHP File or class loader for PHP. Built with PHP.
 
