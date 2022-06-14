@@ -187,7 +187,7 @@
         /**
          * Find all files matching file params and store them in $files
          */
-        private function findFiles(): void
+        public function findFiles(): array
         {
             $finder = new Finder();
             $finder->files()->name($this->fileName)->in($this->path);
@@ -197,12 +197,23 @@
             }
 
             if (!$finder->hasResults()) {
-                return;
+                return [];
             }
 
             foreach ($finder as $file) {
                 $this->files[] = $file->getPathname();
             }
+            return $this->files;
+        }
+
+        /**
+         * Get the known files
+         *
+         * @return array
+         */
+        public function getFiles(): array
+        {
+            return $this->files;
         }
 
         /**
@@ -212,7 +223,7 @@
         {
             $classes = [];
             foreach ($this->files as $file) {
-                require $file;
+                require_once $file;
                 $classes[] = \pathinfo($file, PATHINFO_FILENAME);
             }
 

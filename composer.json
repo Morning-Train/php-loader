@@ -17,7 +17,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Morningtrain\\PHPLoader\\Tests\\": "tests"
+      "Morningtrain\\PHPLoader\\Tests\\Unit\\": "tests/Unit",
+      "Morningtrain\\PHPLoader\\Tests\\Feature\\": "tests/Feature"
     }
   },
   "require": {
