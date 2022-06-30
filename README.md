@@ -1,8 +1,8 @@
 # PHP Loader
 
-[![Latest Release](https://backuptrain.dk/internal-projects/php-loader/-/badges/release.svg)](https://backuptrain.dk/internal-projects/php-loader/-/releases)
-[![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/pipelines)
-[![coverage status](https://backuptrain.dk/internal-projects/php-loader/badges/master/coverage.svg)](https://backuptrain.dk/internal-projects/php-loader/-/graphs/master/charts)
+#[![Latest Release](https://backuptrain.dk/internal-projects/php-loader/-/badges/release.svg)](https://backuptrain.dk/internal-projects/php-loader/-/releases)
+#[![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/pipelines)
+#[![coverage status](https://backuptrain.dk/internal-projects/php-loader/badges/master/coverage.svg)](https://backuptrain.dk/internal-projects/php-loader/-/graphs/master/charts)
 
 A simple PHP File or class loader for PHP. Built with PHP.
 
@@ -22,12 +22,9 @@ A simple PHP File or class loader for PHP. Built with PHP.
     - [Call Static](#call-static)
     - [Class or inheritance requirement](#class-or-inheritance-requirement)
     - [Constructing, invoking or calling](#constructing-invoking-or-calling)
-- [Optimizations](#optimizations)
-    - [Generating cache map](#generating-cache-map)
-- [Real life ground-breaking examples for cool kidz!! 😎](#real-life-ground-breaking-examples-for-cool-kidz-)
-    - [Loading routes](#loading-routes)
-    - [Loading and initializing Hooks](#loading-and-initializing-hooks)
-    - [Loading and initializing Blocks](#loading-and-initializing-blocks)
+- [Credits](#credits)
+- [Testing](#testing)
+- [License](#license)
 
 ## Introduction
 
@@ -50,26 +47,8 @@ To use the tool have a look at [Usage](#usage)
 
 ### Installation
 
-**(WIP 🚧)**
-
-For now the tool is available here at backuptrain/gitlab. The package is a private package so to install it you must be
-verified.
-
-This is done by making sure you have a token on your user with `api` permissions.
-
-Then run `afd` in your project root to create your key `auth.json`. Now register backuptrain as a repo by adding the
-following to your `composer.json`:
-
-```json
-{
-}
-```
-
-Finally add your package and install it!
-
-```json
-{
-}
+```bash
+composer require morningtrain/php-loader
 ```
 
 ## Dependencies
@@ -198,49 +177,19 @@ If you use `Loader::invoke` or `Loader::call` then it is not necessary to use `L
         ->call('myMethod');
 ```
 
-## Optimizations
+## Credits
 
-**(WIP 🚧)**
+- [Mathias Munk](https://github.com/mrmoeg)
+- [All Contributors](../../contributors)
 
-### Generating cache map
+## Testing
 
-## Real life ground-breaking examples for cool kidz!! 😎
-
-This class can be used in many ways, since it is so useful and great. Here are a couple of examples!
-
-### Loading routes
-
-Loading all routes would look like this:
-
-```php
-    // Loading all PHP files in ./App/routes
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/routes');
+```bash
+composer test
 ```
 
-### Loading and initializing Hooks
+## License
 
-Loading and initializing all hooks would look like this:
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
-```php
-    // Loading all PHP files in ./App/Hooks and invoking them
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/Hooks')
-        ->isA(\Morningtrain\WP\Core\Abstracts\AbstractHook::class)
-        ->invoke();
-```
 
-### Loading and initializing Blocks
-
-Loading and initializing all blocks would look like this:
-
-```php
-    // Loading all PHP files in ./App/Blocks and initializing them
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/Block')
-        ->fileName('*Block.php')
-        ->call('init');
-```
