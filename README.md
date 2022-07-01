@@ -28,6 +28,9 @@ A simple PHP File or class loader for PHP. Built with PHP.
     - [Loading routes](#loading-routes)
     - [Loading and initializing Hooks](#loading-and-initializing-hooks)
     - [Loading and initializing Blocks](#loading-and-initializing-blocks)
+- [Credits](#credits)
+- [Testing](#testing)
+- [License](#license)
 
 ## Introduction
 
@@ -36,7 +39,7 @@ rules in a defined directory.
 
 You may even initialize the classes contained in these files as long as they are PSR-4 compliant.
 
-For instance you may use this tool to load all files in a "/routes" directory or all files ending with "Block.php" and
+For instance, you may use this tool to load all files in a "/routes" directory or all files ending with "Block.php" and
 initialize all found classes that extend `Block` and then call `init` on them.
 
 More specifically, this tool is made for, but not dependent on, the WP-Framework. Here it is useful for loading in all
@@ -44,32 +47,16 @@ routes, registering all blocks and initializing all Hooks.
 
 ## Getting Started
 
-To get started instal the package as described below in [Installation](#installation).
+To get started install the package as described below in [Installation](#installation).
 
 To use the tool have a look at [Usage](#usage)
 
 ### Installation
 
-**(WIP 🚧)**
+Install using composer
 
-For now the tool is available here at backuptrain/gitlab. The package is a private package so to install it you must be
-verified.
-
-This is done by making sure you have a token on your user with `api` permissions.
-
-Then run `afd` in your project root to create your key `auth.json`. Now register backuptrain as a repo by adding the
-following to your `composer.json`:
-
-```json
-{
-}
-```
-
-Finally add your package and install it!
-
-```json
-{
-}
+```bash
+composer require morningtrain/php-loader
 ```
 
 ## Dependencies
@@ -244,3 +231,18 @@ Loading and initializing all blocks would look like this:
         ->fileName('*Block.php')
         ->call('init');
 ```
+
+## Credits
+
+- [Mathias Munk](https://github.com/mrmoeg)
+- [All Contributors](../../contributors)
+
+## Testing
+
+```bash
+composer test
+```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
