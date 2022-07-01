@@ -1,9 +1,5 @@
 # PHP Loader
 
-[![Latest Release](https://backuptrain.dk/internal-projects/php-loader/-/badges/release.svg)](https://backuptrain.dk/internal-projects/php-loader/-/releases)
-[![pipeline status](https://backuptrain.dk/internal-projects/php-loader/badges/master/pipeline.svg)](https://backuptrain.dk/internal-projects/php-loader/-/pipelines)
-[![coverage status](https://backuptrain.dk/internal-projects/php-loader/badges/master/coverage.svg)](https://backuptrain.dk/internal-projects/php-loader/-/graphs/master/charts)
-
 A simple PHP File or class loader for PHP. Built with PHP.
 
 ## Table of Contents
@@ -22,12 +18,6 @@ A simple PHP File or class loader for PHP. Built with PHP.
     - [Call Static](#call-static)
     - [Class or inheritance requirement](#class-or-inheritance-requirement)
     - [Constructing, invoking or calling](#constructing-invoking-or-calling)
-- [Optimizations](#optimizations)
-    - [Generating cache map](#generating-cache-map)
-- [Real life ground-breaking examples for cool kidz!! 😎](#real-life-ground-breaking-examples-for-cool-kidz-)
-    - [Loading routes](#loading-routes)
-    - [Loading and initializing Hooks](#loading-and-initializing-hooks)
-    - [Loading and initializing Blocks](#loading-and-initializing-blocks)
 - [Credits](#credits)
 - [Testing](#testing)
 - [License](#license)
@@ -52,8 +42,6 @@ To get started install the package as described below in [Installation](#install
 To use the tool have a look at [Usage](#usage)
 
 ### Installation
-
-Install using composer
 
 ```bash
 composer require morningtrain/php-loader
@@ -185,53 +173,6 @@ If you use `Loader::invoke` or `Loader::call` then it is not necessary to use `L
         ->call('myMethod');
 ```
 
-## Optimizations
-
-**(WIP 🚧)**
-
-### Generating cache map
-
-## Real life ground-breaking examples for cool kidz!! 😎
-
-This class can be used in many ways, since it is so useful and great. Here are a couple of examples!
-
-### Loading routes
-
-Loading all routes would look like this:
-
-```php
-    // Loading all PHP files in ./App/routes
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/routes');
-```
-
-### Loading and initializing Hooks
-
-Loading and initializing all hooks would look like this:
-
-```php
-    // Loading all PHP files in ./App/Hooks and invoking them
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/Hooks')
-        ->isA(\Morningtrain\WP\Core\Abstracts\AbstractHook::class)
-        ->invoke();
-```
-
-### Loading and initializing Blocks
-
-Loading and initializing all blocks would look like this:
-
-```php
-    // Loading all PHP files in ./App/Blocks and initializing them
-    use Morningtrain\PHPLoader\Loader;
-    
-    Loader::create(__DIR__ . '/App/Block')
-        ->fileName('*Block.php')
-        ->call('init');
-```
-
 ## Credits
 
 - [Mathias Munk](https://github.com/mrmoeg)
@@ -246,3 +187,5 @@ composer test
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
+
