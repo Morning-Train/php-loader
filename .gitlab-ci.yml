@@ -24,7 +24,7 @@ include:
   - remote: https://devops.mtra.in/tpl/v3/base/php.yml
 
 variables:
-  PHP_VERSION: '8.0'
+  PHP_VERSION: '8.4'
 
 test:
   extends: .php-base
@@ -42,7 +42,9 @@ test:
   coverage: '/^\s*Lines:\s*\d+.\d+\%/'
   artifacts:
     reports:
-      cobertura: coverage/cobertura-coverage.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
       junit: phpunit-report.xml
   cache:
     key: "$CI_COMMIT_REF_SLUG-composer"
